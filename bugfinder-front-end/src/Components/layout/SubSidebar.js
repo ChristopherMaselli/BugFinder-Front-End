@@ -1,0 +1,59 @@
+import React from "react";
+import "./SubSidebar.css";
+
+function SubSidebar() {
+  return (
+    <div class="SubViewport">
+      <div class="SubSidebar">
+        <header>
+          <a href="#">Ticket Tracker</a>
+        </header>
+        <ul class="nav">
+          <li>
+            <a href="#">
+              <i class="zmdi zmdi-view-dashboard"></i>Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="zmdi zmdi-link"></i>Shortcuts
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="zmdi zmdi-widgets"></i>Overview
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="zmdi zmdi-calendar"></i>Events
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="zmdi zmdi-info-outline"></i>About
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="zmdi zmdi-settings"></i>Services
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="zmdi zmdi-comment-more"></i>Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="content">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right"></ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  );
+}
+export default SubSidebar;
