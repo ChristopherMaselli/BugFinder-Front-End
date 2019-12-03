@@ -5,45 +5,29 @@ function MainSidebar() {
   return (
     <div class="MainViewport">
       <div class="MainSidebar">
-        <ul class="nav">
-          <li>
-            <a href="#">
-              <i class="zmdi zmdi-view-dashboard"></i>DSL
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="zmdi zmdi-view-dashboard"></i>SS
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="zmdi zmdi-link"></i>PS
-            </a>
-          </li>
-        </ul>
-        <ul class="nav"> &nbsp; </ul>
-        <ul class="nav">
-          <li>
-            <a href="#">
-              <i class="zmdi zmdi-widgets"></i>QM
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="zmdi zmdi-calendar"></i>YPP
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="content">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <ul class="nav navbar-nav navbar-right"></ul>
+        <div class="nav-top">
+          <div>
+            <a href="#">DSL</a>
           </div>
-        </nav>
+          <div>
+            <a href="#">SS</a>
+          </div>
+          <div>
+            <a href="#">PS</a>
+          </div>
+        </div>
+        <div class="nav"> &nbsp;</div>
+        <div class="nav-bottom">
+          <div>
+            <a href="#">QM</a>
+          </div>
+          <div>
+            <a href="#">YPP</a>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
 export default MainSidebar;

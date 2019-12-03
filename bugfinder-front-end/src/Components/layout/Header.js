@@ -3,10 +3,20 @@ import "./Header.css";
 
 function Header() {
   return (
-    <header>
-      <a href="/">&nbsp;&nbsp; Home &nbsp;&nbsp;</a>
-      <a href="/about">Dashboards &nbsp;&nbsp;</a>
-    </header>
+    <div class="Header">
+      <div class="HeaderBoard">
+        <a href="/">Board</a>
+      </div>
+      <div></div>
+      <div class="HeaderEnd">
+        <a class="Button" href="/about">
+          Release
+        </a>
+        <a class="DotOptions" href="/about">
+          ...
+        </a>
+      </div>
+    </div>
   );
 }
 

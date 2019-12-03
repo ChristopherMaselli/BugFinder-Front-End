@@ -13,7 +13,9 @@ function App() {
     <div className="blah">
       <MainSidebar />
       <SubSidebar />
-      <div className="c">The Other Something</div>
+      <div className="c">
+        <Header />
+      </div>
     </div>
   );
 }

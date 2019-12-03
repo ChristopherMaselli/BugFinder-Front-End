@@ -34,15 +34,32 @@ body {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
   overflow-y: auto;
+  text-align: center;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 20% 60% 20%;
+  /* grid-template-columns: 100%; */
+  grid-template-rows: 50px 1fr min-content 13px;
+}
+
+.MainSidebar .nav-top a {
+  background: none;
+  color: #fff;
+  /* display: block; */
+  text-decoration: none;
+  font-size: 8px;
+}
+
+.MainSidebar .nav-bottom a {
+  background: none;
+  color: #fff;
+  /* display: block; */
+  text-decoration: none;
+  font-size: 8px;
 }
 
 .MainSidebar .nav a {
   background: none;
   color: #fff;
-  display: block;
+  /* display: block; */
   text-decoration: none;
   font-size: 8px;
 }
@@ -55,6 +72,22 @@ body {
 .MainSidebar .nav {
   text-align: center;
   line-height: 40px;
+  /* display: flex; */
+  /* justify-self: stretch; */
+}
+
+.MainSidebar .nav-top {
+  text-align: center;
+  line-height: 40px;
+  /* display: flex; */
+  /* justify-self: flex-start; */
+}
+
+.MainSidebar .nav-bottom {
+  text-align: center;
+  line-height: 40px;
+  /* display: flex; */
+  /* justify-self: flex-end; */
 }
 
 .MainSidebar li {
