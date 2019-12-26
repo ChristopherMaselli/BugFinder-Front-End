@@ -1,11 +1,6 @@
 /*
  * Sidebar
  */
-body {
-  font-size: 0.875rem;
-  text-align: center;
-}
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -22,7 +17,7 @@ body {
   height: calc(100vh - 48px);
   padding-top: 0.5rem;
   overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  overflow-y: hidden; /* Scrollable contents if viewport is shorter than content. */
   font-size: 0.875rem;
   text-align: center;
 }
@@ -65,7 +60,6 @@ body {
 
 .col-lg-10 {
   flex: 0 0 87.333333%;
-  max-width: 103.333333%;
 }
 
 .nav-intercept {

@@ -7,16 +7,18 @@ html {
   }
 }
 
-.container {
-  max-width: 960px;
-}
-
 .pricing-header {
   max-width: 700px;
 }
 
 .card-deck .card {
   min-width: 220px;
+  cursor: default;
+  min-height: 164px;
+  display: flexbox;
+  align-items: center;
+  transition: transform 0.7s;
+  transform: scale(1);
 }
 
 .card-project-name {
@@ -25,4 +27,10 @@ html {
 
 .card .card-body {
   background-color: white;
+  cursor: default;
+  width: 292px;
+  max-height: 164px;
+  min-height: 164px;
+  transition: transform 0.2s;
+  transform: scale(1);
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./NavBar.css";
+//import "./NavBar.css";
 
 export default function NavBar() {
   return (
@@ -9,7 +9,7 @@ export default function NavBar() {
           Company name
         </a>
         <input
-          class="form-control form-control-dark w-100"
+          class="form-control form-control w-100"
           type="text"
           placeholder="Search"
           aria-label="Search"

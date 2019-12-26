@@ -1,0 +1,142 @@
+state = {
+    posts: [
+      {
+        id: 1,
+        status: "TODO",
+        desc: "Engage Jupiter Express for outer solar system travel",
+        name: "SPACE TRAVEL PARTERNERS",
+        color: "Yellow",
+        state: 1,
+        upArrow: 2,
+        number: 5,
+        letters: "TIS-25",
+        owner: "Chris"
+      },
+      {
+        id: 2,
+        status: "IN PROGRESS",
+        desc: "Create 90 day plans for all departments in the Mars Office",
+        name: "LOCAL MARS OFFICE",
+        color: "Orange",
+        state: 2,
+        upArrow: 0,
+        number: 9,
+        letters: "TIS-12",
+        owner: "NA"
+      },
+      {
+        id: 3,
+        status: "CODE REVIEW",
+        desc: "Engage Saturn's Rings Resort as a preferred provider",
+        name: "SPACE TRAVEL PARTERNERS",
+        color: "Yellow",
+        state: 2,
+        upArrow: 2,
+        number: 3,
+        letters: "TIS-17",
+        owner: "Sam"
+      },
+      {
+        id: 4,
+        status: "DONE",
+        desc: "Requesting available flights is now taking > 5 seconds",
+        name: "SEESPACEEZ PLUS",
+        color: "Blue",
+        state: 3,
+        upArrow: 2,
+        number: 3,
+        letters: "TIS-8",
+        owner: "John"
+      }
+    ],
+    toDoPosts: [],
+    inProgressPosts: [],
+    codeReviewPosts: [],
+    done: []
+  };
+
+
+
+  <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">New Post</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className="container">To add Form Fields for Helpdesk</div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="danger" onClick={props.onPopupChange}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+
+              <form>
+            <div class="form-group">
+              <label htmlFor="exampleFormControlInput1">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="name@example.com"
+              ></input>
+            </div>
+            <div class="form-group">
+              <label htmlFor="exampleFormControlSelect1">Example select</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label htmlFor="exampleFormControlSelect2">
+                Example multiple select
+              </label>
+              <select
+                multiple
+                class="form-control"
+                id="exampleFormControlSelect2"
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label htmlFor="exampleFormControlTextarea1">
+                Example textarea
+              </label>
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+              ></textarea>
+            </div>
+          </form>
+
+                  /*
+        {this.state.showPopup ? (
+          <Popup
+            show={this.state.}
+            data-target="#exampleModalCenter"
+            onPopupChange={this.handlePopup}
+          />
+        ) : null}
+        */
+
+          const [formInfo, setFormInfo] = useState({
+    postName: "",
+    postDesc: "",
+    postStatus: "To Do",
+    postColor: "Red",
+    postState: 1,
+    postUpArrow: 1,
+    postNumber: 1,
+    postLetters: "",
+    postOwner: ""
+  });
