@@ -15,7 +15,12 @@ const Popup = props => {
         <Modal.Title id="contained-modal-title-vcenter">Add Post</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <PostForm existent={props.existent} postdata={props.postdata} />
+        <PostForm
+          existent={props.existent}
+          postdata={props.postdata}
+          closeForm={props.onHide}
+          refreshposts={props.refreshposts}
+        />
       </Modal.Body>
       <Modal.Footer>
         <Button varient="danger" onClick={props.onHide}>

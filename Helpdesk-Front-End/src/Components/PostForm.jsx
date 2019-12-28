@@ -41,16 +41,17 @@ const PostForm = props => {
     setFormInfo(tempFormInfo);
   };
 
-  const handleDelete = e => {
-    const id = formInfo.postName;
-    //await axios.delete("https://localhost:5001/api/Postitems/" + id);
+  const handleDelete = async e => {
+    const id = formInfo.postId;
+    await axios.delete("https://localhost:5001/api/Postitems/" + id);
+    props.closeForm();
+    return props.refreshposts;
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
 
     const obj = {
-      id: 7,
       name: formInfo.postName,
       desc: formInfo.postDesc,
       status: formInfo.postStatus,
@@ -62,7 +63,15 @@ const PostForm = props => {
       owner: "Test"
     };
 
-    //await axios.post("https://localhost:5001/api/PostItems", obj);
+    if (formInfo.postId == -1) {
+      await axios.post("https://localhost:5001/api/PostItems", obj);
+    } else {
+      obj["id"] = formInfo.postId;
+      console.log(obj);
+      await axios.put("https://localhost:5001/api/PostItems/" + obj.id, obj);
+    }
+    props.closeForm();
+    return props.refreshposts;
   };
 
   const dataObj = {
@@ -100,10 +109,10 @@ const PostForm = props => {
             onChange={postStatusRef => handleChange(postStatusRef)}
             name="postStatus"
           >
-            <option>To Do</option>
-            <option>In Progress</option>
-            <option>Code Review</option>
-            <option>Done</option>
+            <option>TO DO</option>
+            <option>IN PROGRESS</option>
+            <option>CODE REVIEW</option>
+            <option>DONE</option>
           </Form.Control>
         </Form.Group>
       </Form.Row>
@@ -202,10 +211,12 @@ const PostForm = props => {
       </Form.Row>
 
       <div className="wrapper">
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={props.closeForm}>
           Submit
         </Button>
-        <Button variant="danger">Delete Post</Button>
+        <Button variant="danger" onClick={handleDelete}>
+          Delete Post
+        </Button>
       </div>
     </Form>
   );

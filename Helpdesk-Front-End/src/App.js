@@ -23,7 +23,7 @@ class App extends Component {
       id: 0,
       name: "",
       desc: "",
-      status: "To Do",
+      status: "TO DO",
       color: "Red",
       state: 1,
       upArrow: 1,
@@ -32,10 +32,10 @@ class App extends Component {
       owner: ""
     },
     newPostData: {
-      id: 0,
+      id: -1,
       name: "",
       desc: "",
-      status: "To Do",
+      status: "TO DO",
       color: "Red",
       state: 1,
       upArrow: 1,
@@ -56,14 +56,14 @@ class App extends Component {
   };
   */
 
-  handlePopup = (d = this.state.currentPostData) => {
+  handlePopup = d => {
     this.setState({
       addModalShow: true,
       currentPostData: d
     });
   };
 
-  async componentDidMount() {
+  async UpdatePosts() {
     // pending > resolved (success) OR rejected (failure)
     const { data: todoPosts } = await axios.get(
       "https://localhost:5001/api/Postitems",
@@ -109,6 +109,10 @@ class App extends Component {
     });
   }
 
+  async componentDidMount() {
+    this.UpdatePosts();
+  }
+
   /*
   filterState = status => {
     this.setState({
@@ -116,6 +120,25 @@ class App extends Component {
     });
   };
   */
+
+  createPosts = e => {
+    return e.map(f => (
+      <Post
+        key={f.id}
+        id={f.id}
+        desc={f.desc}
+        name={f.name}
+        status={f.status}
+        color={f.color}
+        state={f.state}
+        upArrow={f.upArrow}
+        number={f.number}
+        letters={f.letters}
+        owner={f.owner}
+        onPopupChange={d => this.handlePopup(d)}
+      />
+    ));
+  };
 
   render() {
     let addModalClose = () => this.setState({ addModalShow: false });
@@ -131,97 +154,33 @@ class App extends Component {
                 onHide={addModalClose}
                 existent={this.state.currentPostExistent}
                 postdata={this.state.currentPostData}
+                refreshposts={this.UpdatePosts()}
               />
               <Header
-                onPopupChange={() => this.handlePopup()}
+                onPopupChange={d => this.handlePopup(d)}
                 postData={this.state.newPostData}
               />
               <SubNavbar />
               <div class="container">
                 <div class="card-deck mb-3 text-center">
-                  <div
-                    class="card mb-4 shadow-sm"
-                    width="292px"
-                    max-height="164px"
-                  >
+                  <div class="card mb-4 shadow-sm">
                     <p>TO DO</p>
-                    {this.state.todoPosts.map(todoPost => (
-                      <Post
-                        key={todoPost.id}
-                        desc={todoPost.desc}
-                        name={todoPost.name}
-                        status={todoPost.status}
-                        color={todoPost.color}
-                        state={todoPost.state}
-                        upArrow={todoPost.upArrow}
-                        number={todoPost.number}
-                        letters={todoPost.letters}
-                        owner={todoPost.owner}
-                        onPopupChange={this.handlePopup}
-                      />
-                    ))}
+                    <div>{this.createPosts(this.state.todoPosts)}</div>
                   </div>
 
-                  <div
-                    class="card mb-4 shadow-sm"
-                    class="card mb-4 shadow-sm"
-                    width="292px"
-                    max-height="164px"
-                  >
+                  <div class="card mb-4 shadow-sm">
                     <p>IN PROGRESS</p>
-                    {this.state.inProgressPosts.map(inProgressPost => (
-                      <Post
-                        key={inProgressPost.id}
-                        desc={inProgressPost.desc}
-                        name={inProgressPost.name}
-                        status={inProgressPost.status}
-                        color={inProgressPost.color}
-                        state={inProgressPost.state}
-                        upArrow={inProgressPost.upArrow}
-                        number={inProgressPost.number}
-                        letters={inProgressPost.letters}
-                        owner={inProgressPost.owner}
-                        onPopupChange={(e, d) => this.handlePopup(e, d)}
-                      />
-                    ))}
+                    <div>{this.createPosts(this.state.inProgressPosts)}</div>
                   </div>
 
                   <div class="card mb-4 shadow-sm">
                     <p>CODE REVIEW</p>
-                    {this.state.codeReviewPosts.map(codeReviewPost => (
-                      <Post
-                        key={codeReviewPost.id}
-                        desc={codeReviewPost.desc}
-                        name={codeReviewPost.name}
-                        status={codeReviewPost.status}
-                        color={codeReviewPost.color}
-                        state={codeReviewPost.state}
-                        upArrow={codeReviewPost.upArrow}
-                        number={codeReviewPost.number}
-                        letters={codeReviewPost.letters}
-                        owner={codeReviewPost.owner}
-                        onPopupChange={(e, d) => this.handlePopup(e, d)}
-                      />
-                    ))}
+                    <div>{this.createPosts(this.state.codeReviewPosts)}</div>
                   </div>
 
                   <div class="card mb-4 shadow-sm">
                     <p>DONE</p>
-                    {this.state.donePosts.map(donePost => (
-                      <Post
-                        key={donePost.id}
-                        desc={donePost.desc}
-                        name={donePost.name}
-                        status={donePost.status}
-                        color={donePost.color}
-                        state={donePost.state}
-                        upArrow={donePost.upArrow}
-                        number={donePost.number}
-                        letters={donePost.letters}
-                        owner={donePost.owner}
-                        onPopupChange={(e, d) => this.handlePopup(e, d)}
-                      />
-                    ))}
+                    <div>{this.createPosts(this.state.donePosts)}</div>
                   </div>
                 </div>
               </div>

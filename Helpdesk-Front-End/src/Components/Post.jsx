@@ -36,7 +36,7 @@ const Post = props => {
   };
 
   const d = {
-    id: 0,
+    id: props.id,
     name: props.name,
     desc: props.desc,
     status: props.status,

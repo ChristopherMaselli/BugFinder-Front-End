@@ -140,3 +140,23 @@ state = {
     postLetters: "",
     postOwner: ""
   });
+
+  {this.state.todoPosts.map(todoPost => (
+                      <Post
+                        key={todoPost.id}
+                        id={todoPost.id}
+                        desc={todoPost.desc}
+                        name={todoPost.name}
+                        status={todoPost.status}
+                        color={todoPost.color}
+                        state={todoPost.state}
+                        upArrow={todoPost.upArrow}
+                        number={todoPost.number}
+                        letters={todoPost.letters}
+                        owner={todoPost.owner}
+                        onPopupChange={d => this.handlePopup(d)}
+                      />
+                    ))}
+
+                                        width="292px"
+                    max-height="164px"
