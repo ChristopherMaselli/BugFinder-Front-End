@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import "./Post.css";
@@ -11,6 +11,20 @@ const Post = props => {
     minHeight: 164,
     transform: "scale(1)"
   });
+
+  const [colorInfo, setColorInfo] = useState({
+    background: props.color,
+    color: "black"
+  });
+
+  const handleColors = () => {
+    if (props.color == "Blue") {
+      setColorInfo({
+        background: props.color,
+        color: "white"
+      });
+    }
+  };
 
   const List = styled.ul`
     overflow-x: auto;
@@ -65,7 +79,7 @@ const Post = props => {
       >
         <div>
           <p class="card-title pricing-card-title">{props.desc}</p>
-          <div class="card-project-name" background-color={props.color}>
+          <div class="card-project-name" style={colorInfo}>
             {props.name}
           </div>
           <nav class="navbar navbar-dark flex-md-nowrap p-0 shadow">
