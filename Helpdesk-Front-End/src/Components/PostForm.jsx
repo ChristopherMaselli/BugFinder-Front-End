@@ -2,6 +2,7 @@ import React from "react";
 import "./PostForm.css";
 import { useState, useEffect } from "react";
 import { Modal, Button, Row, Col, Form } from "react-bootstrap";
+import { SketchPicker } from "react-color";
 import axios from "axios";
 
 const PostForm = props => {
@@ -10,7 +11,12 @@ const PostForm = props => {
     postName: props.postdata.name,
     postDesc: props.postdata.desc,
     postStatus: props.postdata.status,
-    postColor: props.postdata.color,
+    postBackgroundColorValue: props.postdata.backgroundColorValue,
+    postHoverbackgroundColorValue: props.postdata.hoverBackgroundColorValue,
+    postMidColorValue: props.postdata.midColorValue,
+    postHoverMidColorValue: props.postdata.hoverMidColorValue,
+    postTextColorValue: props.postdata.textColorValue,
+    postHoverTextColorValue: props.postdata.hoverTextColorValue,
     postState: props.postdata.state,
     postUpArrow: props.postdata.upArrow,
     postNumber: props.postdata.number,
@@ -48,6 +54,12 @@ const PostForm = props => {
     return props.refreshposts;
   };
 
+  const handleChangeColor = color => {
+    const tempFormInfo = { ...formInfo };
+    tempFormInfo["postBackgroundColorValue"] = color.hex;
+    setFormInfo(tempFormInfo);
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -55,7 +67,12 @@ const PostForm = props => {
       name: formInfo.postName,
       desc: formInfo.postDesc,
       status: formInfo.postStatus,
-      color: formInfo.postColor,
+      backgroundColorValue: formInfo.postBackgroundColorValue,
+      hoverbackgroundColorValue: formInfo.postHoverbackgroundColorValue,
+      midColorValue: formInfo.postMidColorValue,
+      hoverMidColorValue: formInfo.postHoverMidColorValue,
+      textColorValue: formInfo.postTextColorValue,
+      hoverTextColorValue: formInfo.postHoverTextColorValue,
       state: parseInt(formInfo.postState),
       upArrow: parseInt(formInfo.postUpArrow),
       number: parseInt(formInfo.postNumber),
@@ -72,18 +89,6 @@ const PostForm = props => {
     }
     props.closeForm();
     return props.refreshposts;
-  };
-
-  const dataObj = {
-    postName: props.postdata.name,
-    postDesc: props.postdata.desc,
-    postStatus: props.postdata.status,
-    postColor: props.postdata.color,
-    postState: props.postdata.state,
-    postUpArrow: props.postdata.upArrow,
-    postNumber: props.postdata.number,
-    postLetters: props.postdata.letters,
-    postOwner: props.postdata.owner
   };
 
   return (
@@ -131,20 +136,10 @@ const PostForm = props => {
 
       <Form.Group controlId="Color">
         <Form.Label>Color</Form.Label>
-        <Form.Control
-          as="select"
-          ref={postColorRef}
-          value={formInfo.postColor}
-          onChange={postColorRef => handleChange(postColorRef)}
-          name="postColor"
-        >
-          <option>Red</option>
-          <option>Orange</option>
-          <option>Yellow</option>
-          <option>Green</option>
-          <option>Blue</option>
-          <option>Purple</option>
-        </Form.Control>
+        <SketchPicker
+          color={formInfo.backgroundColorValue}
+          onChangeComplete={handleChangeColor}
+        />
       </Form.Group>
 
       <Form.Group controlId="Letters">

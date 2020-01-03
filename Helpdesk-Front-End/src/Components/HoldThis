@@ -160,3 +160,22 @@ state = {
 
                                         width="292px"
                     max-height="164px"
+
+
+                          <Form.Group controlId="Color">
+        <Form.Label>Color</Form.Label>
+        <Form.Control
+          as="select"
+          ref={postColorRef}
+          value={formInfo.postColor}
+          onChange={postColorRef => handleChange(postColorRef)}
+          name="postColor"
+        >
+          <option>Red</option>
+          <option>Orange</option>
+          <option>Yellow</option>
+          <option>Green</option>
+          <option>Blue</option>
+          <option>Purple</option>
+        </Form.Control>
+      </Form.Group>

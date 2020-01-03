@@ -24,7 +24,12 @@ class App extends Component {
       name: "",
       desc: "",
       status: "TO DO",
-      color: "Red",
+      backgroundColorValue: "#ffffff",
+      hoverBackgroundColorValue: "#ffffff",
+      midColorValue: "#ffffff",
+      hoverMidColorValue: "#ffffff",
+      textColorValue: "#000000",
+      hoverTextColorValue: "#000000",
       state: 1,
       upArrow: 1,
       number: 1,
@@ -36,7 +41,12 @@ class App extends Component {
       name: "",
       desc: "",
       status: "TO DO",
-      color: "Red",
+      backgroundColorValue: "#ffffff",
+      hoverBackgroundColorValue: "#ffffff",
+      midColorValue: "#ffffff",
+      hoverMidColorValue: "#ffffff",
+      textColorValue: "#000000",
+      hoverTextColorValue: "#000000",
       state: 1,
       upArrow: 1,
       number: 1,
@@ -131,7 +141,12 @@ class App extends Component {
         desc={f.desc}
         name={f.name}
         status={f.status}
-        color={f.color}
+        backgroundColorValue={f.backgroundColorValue}
+        hoverBackgroundColorValue={f.hoverBackgroundColorValue}
+        midColorValue={f.midColorValue}
+        hoverMidColorValue={f.hoverMidColorValue}
+        textColorValue={f.textColorValue}
+        hoverTextColorValue={f.hoverTextColorValue}
         state={f.state}
         upArrow={f.upArrow}
         number={f.number}

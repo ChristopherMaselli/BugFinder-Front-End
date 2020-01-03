@@ -6,6 +6,7 @@ import "./Post.css";
 
 const Post = props => {
   const [sizeInfo, setSizeInfo] = useState({
+    background: props.backgroundColorValue,
     width: 292,
     maxHeight: 164,
     minHeight: 164,
@@ -13,18 +14,9 @@ const Post = props => {
   });
 
   const [colorInfo, setColorInfo] = useState({
-    background: props.color,
-    color: "black"
+    background: props.backgroundColorValue,
+    color: props.textColorValue
   });
-
-  const handleColors = () => {
-    if (props.color == "Blue") {
-      setColorInfo({
-        background: props.color,
-        color: "white"
-      });
-    }
-  };
 
   const List = styled.ul`
     overflow-x: auto;
@@ -39,12 +31,14 @@ const Post = props => {
 
   const handleScaleGrow = () => {
     setSizeInfo({
+      background: props.backgroundColorValue,
       transform: "scale(1.1)"
     });
   };
 
   const handleScaleShrink = () => {
     setSizeInfo({
+      background: props.backgroundColorValue,
       transform: "scale(1)"
     });
   };
@@ -54,7 +48,12 @@ const Post = props => {
     name: props.name,
     desc: props.desc,
     status: props.status,
-    color: props.color,
+    backgroundColorValue: props.backgroundColorValue,
+    hoverBackgroundColorValue: props.hoverBackgroundColorValue,
+    midColorValue: props.midColorValue,
+    hoverMidColorValue: props.hoverMidColorValue,
+    textColorValue: props.textColorValue,
+    hoverTextColorValue: props.hoverTextColorValue,
     state: props.state,
     upArrow: props.upArrow,
     number: props.number,
