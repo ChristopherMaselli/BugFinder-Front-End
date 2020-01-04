@@ -12,7 +12,7 @@ const PostForm = props => {
     postDesc: props.postdata.desc,
     postStatus: props.postdata.status,
     postBackgroundColorValue: props.postdata.backgroundColorValue,
-    postHoverbackgroundColorValue: props.postdata.hoverBackgroundColorValue,
+    postHoverBackgroundColorValue: props.postdata.hoverBackgroundColorValue,
     postMidColorValue: props.postdata.midColorValue,
     postHoverMidColorValue: props.postdata.hoverMidColorValue,
     postTextColorValue: props.postdata.textColorValue,
@@ -27,12 +27,6 @@ const PostForm = props => {
   const postNameRef = React.createRef();
   const postDescRef = React.createRef();
   const postStatusRef = React.createRef();
-  const postBackgroundColorValueRef = React.createRef();
-  const postHoverBackgroundColorValueRef = React.createRef();
-  const postMidColorValueRef = React.createRef();
-  const postHoverMidColorValueRef = React.createRef();
-  const postTextColorValueRef = React.createRef();
-  const postHoverTextColorValueRef = React.createRef();
   const postStateRef = React.createRef();
   const postUpArrowRef = React.createRef();
   const postNumberRef = React.createRef();
@@ -99,7 +93,7 @@ const PostForm = props => {
       desc: formInfo.postDesc,
       status: formInfo.postStatus,
       backgroundColorValue: formInfo.postBackgroundColorValue,
-      hoverbackgroundColorValue: formInfo.postHoverbackgroundColorValue,
+      hoverBackgroundColorValue: formInfo.postHoverBackgroundColorValue,
       midColorValue: formInfo.postMidColorValue,
       hoverMidColorValue: formInfo.postHoverMidColorValue,
       textColorValue: formInfo.postTextColorValue,
@@ -189,8 +183,32 @@ const PostForm = props => {
             onChangeComplete={color => handleChangeTextColor(color)}
           />
         </Form.Group>
-      </Form.Row>
 
+        <Form.Group controlId="Hover Background Color">
+          <Form.Label>Hover Background Color</Form.Label>
+
+          <SketchPicker
+            color={formInfo.postHoverBackgroundColorValue}
+            onChangeComplete={color => handleChangeHoverBackgroundColor(color)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="Hover Middle Color">
+          <Form.Label>Hover Middle Color</Form.Label>
+          <SketchPicker
+            color={formInfo.postHoverMidColorValue}
+            onChangeComplete={color => handleChangeHoverMidColor(color)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="Hover Text Color">
+          <Form.Label>Hover Text Color</Form.Label>
+          <SketchPicker
+            color={formInfo.postHoverTextColorValue}
+            onChangeComplete={color => handleChangeHoverTextColor(color)}
+          />
+        </Form.Group>
+      </Form.Row>
       <Form.Group controlId="Letters">
         <Form.Label>Letters</Form.Label>
         <Form.Control

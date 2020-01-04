@@ -14,7 +14,7 @@ const Post = props => {
   });
 
   const [colorInfo, setColorInfo] = useState({
-    background: props.MidColorValue,
+    background: props.midColorValue,
     color: props.textColorValue
   });
 
@@ -31,12 +31,12 @@ const Post = props => {
 
   const handleScaleGrow = () => {
     setSizeInfo({
-      background: props.backgroundColorValue,
+      background: props.hoverBackgroundColorValue,
       transform: "scale(1.1)"
     });
     setColorInfo({
-      background: props.midColorValue,
-      color: props.textColorValue
+      background: props.hoverMidColorValue,
+      color: props.hoverTextColorValue
     });
   };
 
