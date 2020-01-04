@@ -179,3 +179,32 @@ state = {
           <option>Purple</option>
         </Form.Control>
       </Form.Group>
+
+
+      
+      <Form.row>
+        <Form.Group controlId="Hover BackgroundColor">
+          <Form.Label>Hover Background Color</Form.Label>
+
+          <SketchPicker
+            color={formInfo.postHpverBackgroundColorValue}
+            onChangeComplete={color => handleChangeHoverBackgroundColor(color)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="Hover MiddleColor">
+          <Form.Label>Hover Middle Color</Form.Label>
+          <SketchPicker
+            color={formInfo.postHoverMiddleColorValue}
+            onChangeComplete={color => handleChangeHoverMidColor(color)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="Hover TextColor">
+          <Form.Label>Hover Text Color</Form.Label>
+          <SketchPicker
+            color={formInfo.postHoverTextColorValue}
+            onChangeComplete={color => handleChangeHoverTextColor(color)}
+          />
+        </Form.Group>
+      </Form.row>

@@ -27,7 +27,12 @@ const PostForm = props => {
   const postNameRef = React.createRef();
   const postDescRef = React.createRef();
   const postStatusRef = React.createRef();
-  const postColorRef = React.createRef();
+  const postBackgroundColorValueRef = React.createRef();
+  const postHoverBackgroundColorValueRef = React.createRef();
+  const postMidColorValueRef = React.createRef();
+  const postHoverMidColorValueRef = React.createRef();
+  const postTextColorValueRef = React.createRef();
+  const postHoverTextColorValueRef = React.createRef();
   const postStateRef = React.createRef();
   const postUpArrowRef = React.createRef();
   const postNumberRef = React.createRef();
@@ -54,10 +59,36 @@ const PostForm = props => {
     return props.refreshposts;
   };
 
-  const handleChangeColor = color => {
+  const HandleColorChangeEffect = (color, name) => {
+    console.log(color);
+    console.log(name);
     const tempFormInfo = { ...formInfo };
-    tempFormInfo["postBackgroundColorValue"] = color.hex;
+    tempFormInfo[name] = color.hex;
     setFormInfo(tempFormInfo);
+  };
+
+  const handleChangeBackgroundColor = color => {
+    HandleColorChangeEffect(color, "postBackgroundColorValue");
+  };
+
+  const handleChangeMidColor = color => {
+    HandleColorChangeEffect(color, "postMidColorValue");
+  };
+
+  const handleChangeTextColor = color => {
+    HandleColorChangeEffect(color, "postTextColorValue");
+  };
+
+  const handleChangeHoverBackgroundColor = color => {
+    HandleColorChangeEffect(color, "postHoverBackgroundColorValue");
+  };
+
+  const handleChangeHoverMidColor = color => {
+    HandleColorChangeEffect(color, "postHoverMidColorValue");
+  };
+
+  const handleChangeHoverTextColor = color => {
+    HandleColorChangeEffect(color, "postHoverTextColorValue");
   };
 
   const handleSubmit = async e => {
@@ -133,14 +164,32 @@ const PostForm = props => {
           name="postDesc"
         />
       </Form.Group>
+      <Form.Row>
+        <Form.Group controlId="BackgroundColor">
+          <Form.Label>Background Color</Form.Label>
 
-      <Form.Group controlId="Color">
-        <Form.Label>Color</Form.Label>
-        <SketchPicker
-          color={formInfo.backgroundColorValue}
-          onChangeComplete={handleChangeColor}
-        />
-      </Form.Group>
+          <SketchPicker
+            color={formInfo.postBackgroundColorValue}
+            onChangeComplete={color => handleChangeBackgroundColor(color)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="MiddleColor">
+          <Form.Label>Middle Color</Form.Label>
+          <SketchPicker
+            color={formInfo.postMidColorValue}
+            onChangeComplete={color => handleChangeMidColor(color)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="TextColor">
+          <Form.Label>Text Color</Form.Label>
+          <SketchPicker
+            color={formInfo.postTextColorValue}
+            onChangeComplete={color => handleChangeTextColor(color)}
+          />
+        </Form.Group>
+      </Form.Row>
 
       <Form.Group controlId="Letters">
         <Form.Label>Letters</Form.Label>

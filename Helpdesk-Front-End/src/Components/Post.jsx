@@ -14,7 +14,7 @@ const Post = props => {
   });
 
   const [colorInfo, setColorInfo] = useState({
-    background: props.backgroundColorValue,
+    background: props.MidColorValue,
     color: props.textColorValue
   });
 
@@ -34,12 +34,20 @@ const Post = props => {
       background: props.backgroundColorValue,
       transform: "scale(1.1)"
     });
+    setColorInfo({
+      background: props.midColorValue,
+      color: props.textColorValue
+    });
   };
 
   const handleScaleShrink = () => {
     setSizeInfo({
       background: props.backgroundColorValue,
       transform: "scale(1)"
+    });
+    setColorInfo({
+      background: props.midColorValue,
+      color: props.textColorValue
     });
   };
 
