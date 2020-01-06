@@ -25,11 +25,11 @@ class App extends Component {
       desc: "",
       status: "TO DO",
       backgroundColorValue: "#ffffff",
-      hoverBackgroundColorValue: "#ffffff",
+      //hoverBackgroundColorValue: "#ffffff",
       midColorValue: "#ffffff",
-      hoverMidColorValue: "#ffffff",
+      //hoverMidColorValue: "#ffffff",
       textColorValue: "#000000",
-      hoverTextColorValue: "#000000",
+      //hoverTextColorValue: "#000000",
       state: 1,
       upArrow: 1,
       number: 1,
@@ -42,11 +42,11 @@ class App extends Component {
       desc: "",
       status: "TO DO",
       backgroundColorValue: "#ffffff",
-      hoverBackgroundColorValue: "#ffffff",
+      //hoverBackgroundColorValue: "#ffffff",
       midColorValue: "#ffffff",
-      hoverMidColorValue: "#ffffff",
+      //hoverMidColorValue: "#ffffff",
       textColorValue: "#000000",
-      hoverTextColorValue: "#000000",
+      //hoverTextColorValue: "#000000",
       state: 1,
       upArrow: 1,
       number: 1,
@@ -76,7 +76,9 @@ class App extends Component {
   };
 
   async UpdatePosts() {
-    // pending > resolved (success) OR rejected (failure)
+    console.log("Updating");
+    console.log(this.state.currentPostData);
+
     const { data: todoPosts } = await axios.get(
       "https://localhost:5001/api/Postitems",
       {
@@ -142,11 +144,11 @@ class App extends Component {
         name={f.name}
         status={f.status}
         backgroundColorValue={f.backgroundColorValue}
-        hoverBackgroundColorValue={f.hoverBackgroundColorValue}
+        //hoverBackgroundColorValue={f.hoverBackgroundColorValue}
         midColorValue={f.midColorValue}
-        hoverMidColorValue={f.hoverMidColorValue}
+        //hoverMidColorValue={f.hoverMidColorValue}
         textColorValue={f.textColorValue}
-        hoverTextColorValue={f.hoverTextColorValue}
+        //hoverTextColorValue={f.hoverTextColorValue}
         state={f.state}
         upArrow={f.upArrow}
         number={f.number}
@@ -171,7 +173,7 @@ class App extends Component {
                 onHide={addModalClose}
                 existent={this.state.currentPostExistent}
                 postdata={this.state.currentPostData}
-                refreshposts={this.UpdatePosts()}
+                refreshposts={() => this.UpdatePosts()}
               />
               <Header
                 onPopupChange={d => this.handlePopup(d)}

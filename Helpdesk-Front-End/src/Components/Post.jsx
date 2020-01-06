@@ -13,7 +13,11 @@ const Post = props => {
     transform: "scale(1)"
   });
 
-  const [colorInfo, setColorInfo] = useState({
+  const [textColorInfo, setTextColorInfo] = useState({
+    color: props.textColorValue
+  });
+
+  const [midColorInfo, setMidColorInfo] = useState({
     background: props.midColorValue,
     color: props.textColorValue
   });
@@ -31,13 +35,13 @@ const Post = props => {
 
   const handleScaleGrow = () => {
     setSizeInfo({
-      background: props.hoverBackgroundColorValue,
+      background: props.backgroundColorValue,
       transform: "scale(1.1)"
     });
-    setColorInfo({
-      background: props.hoverMidColorValue,
-      color: props.hoverTextColorValue
-    });
+    //setTextColorInfo({
+    //background: props.hoverMidColorValue,
+    //color: props.hoverTextColorValue
+    //});
   };
 
   const handleScaleShrink = () => {
@@ -45,10 +49,10 @@ const Post = props => {
       background: props.backgroundColorValue,
       transform: "scale(1)"
     });
-    setColorInfo({
-      background: props.midColorValue,
-      color: props.textColorValue
-    });
+    //setTextColorInfo({
+    //background: props.midColorValue,
+    //color: props.textColorValue
+    //});
   };
 
   const d = {
@@ -57,11 +61,11 @@ const Post = props => {
     desc: props.desc,
     status: props.status,
     backgroundColorValue: props.backgroundColorValue,
-    hoverBackgroundColorValue: props.hoverBackgroundColorValue,
+    //hoverBackgroundColorValue: props.hoverBackgroundColorValue,
     midColorValue: props.midColorValue,
-    hoverMidColorValue: props.hoverMidColorValue,
+    //hoverMidColorValue: props.hoverMidColorValue,
     textColorValue: props.textColorValue,
-    hoverTextColorValue: props.hoverTextColorValue,
+    //hoverTextColorValue: props.hoverTextColorValue,
     state: props.state,
     upArrow: props.upArrow,
     number: props.number,
@@ -84,9 +88,9 @@ const Post = props => {
         onMouseLeave={handleScaleShrink}
         style={sizeInfo}
       >
-        <div>
+        <div style={midColorInfo}>
           <p class="card-title pricing-card-title">{props.desc}</p>
-          <div class="card-project-name" style={colorInfo}>
+          <div class="card-project-name" style={textColorInfo}>
             {props.name}
           </div>
           <nav class="navbar navbar-dark flex-md-nowrap p-0 shadow">

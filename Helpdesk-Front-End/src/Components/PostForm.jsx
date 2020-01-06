@@ -12,17 +12,43 @@ const PostForm = props => {
     postDesc: props.postdata.desc,
     postStatus: props.postdata.status,
     postBackgroundColorValue: props.postdata.backgroundColorValue,
-    postHoverBackgroundColorValue: props.postdata.hoverBackgroundColorValue,
+    //postHoverBackgroundColorValue: props.postdata.hoverBackgroundColorValue,
     postMidColorValue: props.postdata.midColorValue,
-    postHoverMidColorValue: props.postdata.hoverMidColorValue,
+    //postHoverMidColorValue: props.postdata.hoverMidColorValue,
     postTextColorValue: props.postdata.textColorValue,
-    postHoverTextColorValue: props.postdata.hoverTextColorValue,
+    //postHoverTextColorValue: props.postdata.hoverTextColorValue,
     postState: props.postdata.state,
     postUpArrow: props.postdata.upArrow,
     postNumber: props.postdata.number,
     postLetters: props.postdata.letters,
     postOwner: props.postdata.owner
   });
+
+  const [colorPickerState, setColorPickerState] = useState({
+    showBackgroundColorPicker: false,
+    showMidColorPicker: false,
+    showTextColorPicker: false
+    //showHoverBackgroundColorPicker: false,
+    //showHoverMidColorPicker: false,
+    //showHoverTextColorPicker: false
+  });
+
+  const visibilityToggle = e => {
+    setColorPickerState({
+      showBackgroundColorPicker: false,
+      showMidColorPicker: false,
+      showTextColorPicker: false
+      //showHoverBackgroundColorPicker: false,
+      //showHoverMidColorPicker: false,
+      //showHoverTextColorPicker: false
+    });
+
+    const tempColorState = { ...colorPickerState };
+    //const value = e.currentTarget.value;
+    //const name = e.currentTarget.name;
+    tempColorState[e] = true;
+    setColorPickerState(tempColorState);
+  };
 
   const postNameRef = React.createRef();
   const postDescRef = React.createRef();
@@ -73,6 +99,7 @@ const PostForm = props => {
     HandleColorChangeEffect(color, "postTextColorValue");
   };
 
+  /*
   const handleChangeHoverBackgroundColor = color => {
     HandleColorChangeEffect(color, "postHoverBackgroundColorValue");
   };
@@ -84,6 +111,7 @@ const PostForm = props => {
   const handleChangeHoverTextColor = color => {
     HandleColorChangeEffect(color, "postHoverTextColorValue");
   };
+  */
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -93,11 +121,11 @@ const PostForm = props => {
       desc: formInfo.postDesc,
       status: formInfo.postStatus,
       backgroundColorValue: formInfo.postBackgroundColorValue,
-      hoverBackgroundColorValue: formInfo.postHoverBackgroundColorValue,
+      //hoverBackgroundColorValue: formInfo.postHoverBackgroundColorValue,
       midColorValue: formInfo.postMidColorValue,
-      hoverMidColorValue: formInfo.postHoverMidColorValue,
+      //hoverMidColorValue: formInfo.postHoverMidColorValue,
       textColorValue: formInfo.postTextColorValue,
-      hoverTextColorValue: formInfo.postHoverTextColorValue,
+      //hoverTextColorValue: formInfo.postHoverTextColorValue,
       state: parseInt(formInfo.postState),
       upArrow: parseInt(formInfo.postUpArrow),
       number: parseInt(formInfo.postNumber),
@@ -161,7 +189,6 @@ const PostForm = props => {
       <Form.Row>
         <Form.Group controlId="BackgroundColor">
           <Form.Label>Background Color</Form.Label>
-
           <SketchPicker
             color={formInfo.postBackgroundColorValue}
             onChangeComplete={color => handleChangeBackgroundColor(color)}
@@ -181,31 +208,6 @@ const PostForm = props => {
           <SketchPicker
             color={formInfo.postTextColorValue}
             onChangeComplete={color => handleChangeTextColor(color)}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="Hover Background Color">
-          <Form.Label>Hover Background Color</Form.Label>
-
-          <SketchPicker
-            color={formInfo.postHoverBackgroundColorValue}
-            onChangeComplete={color => handleChangeHoverBackgroundColor(color)}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="Hover Middle Color">
-          <Form.Label>Hover Middle Color</Form.Label>
-          <SketchPicker
-            color={formInfo.postHoverMidColorValue}
-            onChangeComplete={color => handleChangeHoverMidColor(color)}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="Hover Text Color">
-          <Form.Label>Hover Text Color</Form.Label>
-          <SketchPicker
-            color={formInfo.postHoverTextColorValue}
-            onChangeComplete={color => handleChangeHoverTextColor(color)}
           />
         </Form.Group>
       </Form.Row>
