@@ -45,8 +45,6 @@ const PostForm = props => {
   };
 
   const handleColorChangeEffect = (color, name) => {
-    console.log(color);
-    console.log(name);
     const tempFormInfo = { ...formInfo };
     tempFormInfo[name] = color.hex;
     setFormInfo(tempFormInfo);
@@ -87,8 +85,9 @@ const PostForm = props => {
       obj["id"] = formInfo.postId;
       await axios.put("https://localhost:5001/api/PostItems/" + obj.id, obj);
     }
+
     props.closeForm();
-    return props.refreshposts;
+    return await props.refreshposts;
   };
 
   return (

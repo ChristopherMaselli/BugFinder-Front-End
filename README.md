@@ -1,2 +1,1 @@
-# Helpdesk-Front-End
-Helpdesk Front End Aspect
+This Repository contains files for the Helpdesk Project front-end Interface. Written in Javascript with a React.js framework for the main code and implimented with Auth.0 to handle Authentication functions. In order to run download the repository, open Visual Studio Code, and run NPM start.

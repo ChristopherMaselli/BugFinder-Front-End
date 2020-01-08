@@ -90,12 +90,12 @@ class App extends Component {
       }
     );
 
-    this.setState({
-      todoPosts,
-      inProgressPosts,
-      codeReviewPosts,
-      donePosts
-    });
+    await new Promise(accept =>
+      this.setState(
+        { todoPosts, inProgressPosts, codeReviewPosts, donePosts },
+        accept
+      )
+    );
   };
 
   async componentDidMount() {
