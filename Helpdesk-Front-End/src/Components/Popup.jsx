@@ -6,7 +6,8 @@ import "./Popup.css";
 const Popup = props => {
   return (
     <Modal
-      {...props}
+      show={props.show}
+      onHide={props.onHide}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -19,7 +20,7 @@ const Popup = props => {
           existent={props.existent}
           postdata={props.postdata}
           closeForm={props.onHide}
-          refreshposts={props.refreshposts}
+          refreshPosts={props.refreshposts}
         />
       </Modal.Body>
       <Modal.Footer>

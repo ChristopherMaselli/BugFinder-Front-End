@@ -5,21 +5,12 @@ import { Button } from "react-bootstrap";
 import "./Post.css";
 
 const Post = props => {
-  const [sizeInfo, setSizeInfo] = useState({
+  const [postBackgroundInfo, setPostBackgroundInfo] = useState({
     background: props.backgroundColorValue,
     width: 292,
     maxHeight: 164,
     minHeight: 164,
     transform: "scale(1)"
-  });
-
-  const [textColorInfo, setTextColorInfo] = useState({
-    color: props.textColorValue
-  });
-
-  const [midColorInfo, setMidColorInfo] = useState({
-    background: props.midColorValue,
-    color: props.textColorValue
   });
 
   const List = styled.ul`
@@ -30,29 +21,21 @@ const Post = props => {
   `;
   const ListItem = styled.li`
     display: inline-block;
-    background: red;
+    background: black;
   `;
 
-  const handleScaleGrow = () => {
-    setSizeInfo({
+  const handleMouseEnter = () => {
+    setPostBackgroundInfo({
       background: props.backgroundColorValue,
       transform: "scale(1.1)"
     });
-    //setTextColorInfo({
-    //background: props.hoverMidColorValue,
-    //color: props.hoverTextColorValue
-    //});
   };
 
-  const handleScaleShrink = () => {
-    setSizeInfo({
+  const handleMouseExit = () => {
+    setPostBackgroundInfo({
       background: props.backgroundColorValue,
       transform: "scale(1)"
     });
-    //setTextColorInfo({
-    //background: props.midColorValue,
-    //color: props.textColorValue
-    //});
   };
 
   const d = {
@@ -61,11 +44,8 @@ const Post = props => {
     desc: props.desc,
     status: props.status,
     backgroundColorValue: props.backgroundColorValue,
-    //hoverBackgroundColorValue: props.hoverBackgroundColorValue,
     midColorValue: props.midColorValue,
-    //hoverMidColorValue: props.hoverMidColorValue,
     textColorValue: props.textColorValue,
-    //hoverTextColorValue: props.hoverTextColorValue,
     state: props.state,
     upArrow: props.upArrow,
     number: props.number,
@@ -82,15 +62,23 @@ const Post = props => {
     <div class="card mb-4 shadow-sm">
       <button
         class="card-body"
-        onClick={handleScaleShrink}
+        onClick={handleMouseExit}
         onClick={() => handlePopupData()}
-        onMouseEnter={handleScaleGrow}
-        onMouseLeave={handleScaleShrink}
-        style={sizeInfo}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseExit}
+        style={postBackgroundInfo}
       >
-        <div style={midColorInfo}>
+        <div
+          style={{
+            background: props.midColorValue,
+            color: props.textColorValue
+          }}
+        >
           <p class="card-title pricing-card-title">{props.desc}</p>
-          <div class="card-project-name" style={textColorInfo}>
+          <div
+            class="card-project-name"
+            style={{ color: props.textColorValue }}
+          >
             {props.name}
           </div>
           <nav class="navbar navbar-dark flex-md-nowrap p-0 shadow">
@@ -111,4 +99,3 @@ const Post = props => {
 };
 
 export default Post;
-// Add Margins to bottom

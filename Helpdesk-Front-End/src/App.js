@@ -4,11 +4,8 @@ import NavBar from "./Components/NavBar";
 import SidebarMain from "./Components/SidebarMain";
 import SubNavbar from "./Components/SubNavbar";
 import "bootstrap/dist/css/bootstrap.css";
-import { Button } from "react-bootstrap";
-import Grid from "./Components/Grid";
 import Post from "./Components/Post";
 import Popup from "./Components/Popup";
-import PostForm from "./Components/PostForm";
 import axios from "axios";
 import "./App.css";
 
@@ -25,11 +22,8 @@ class App extends Component {
       desc: "",
       status: "TO DO",
       backgroundColorValue: "#ffffff",
-      //hoverBackgroundColorValue: "#ffffff",
       midColorValue: "#ffffff",
-      //hoverMidColorValue: "#ffffff",
       textColorValue: "#000000",
-      //hoverTextColorValue: "#000000",
       state: 1,
       upArrow: 1,
       number: 1,
@@ -42,11 +36,8 @@ class App extends Component {
       desc: "",
       status: "TO DO",
       backgroundColorValue: "#ffffff",
-      //hoverBackgroundColorValue: "#ffffff",
       midColorValue: "#ffffff",
-      //hoverMidColorValue: "#ffffff",
       textColorValue: "#000000",
-      //hoverTextColorValue: "#000000",
       state: 1,
       upArrow: 1,
       number: 1,
@@ -55,19 +46,6 @@ class App extends Component {
     }
   };
 
-  /*
-  getPosts = async postStatus => {
-    const result = await axios.get("https://localhost:5001/api/Postitems", {
-      params: {
-        status: postStatus
-      }
-    });
-    return result;
-  };
-  */
-
-  //const Username =
-
   handlePopup = d => {
     this.setState({
       addModalShow: true,
@@ -75,10 +53,7 @@ class App extends Component {
     });
   };
 
-  async UpdatePosts() {
-    console.log("Updating");
-    console.log(this.state.currentPostData);
-
+  updatePosts = async () => {
     const { data: todoPosts } = await axios.get(
       "https://localhost:5001/api/Postitems",
       {
@@ -87,7 +62,6 @@ class App extends Component {
         }
       }
     );
-    /*const { data: todoPosts } = this.getPosts("TODO");*/
 
     const { data: inProgressPosts } = await axios.get(
       "https://localhost:5001/api/Postitems",
@@ -115,25 +89,18 @@ class App extends Component {
         }
       }
     );
+
     this.setState({
       todoPosts,
       inProgressPosts,
       codeReviewPosts,
       donePosts
     });
-  }
+  };
 
   async componentDidMount() {
-    this.UpdatePosts();
+    this.updatePosts();
   }
-
-  /*
-  filterState = status => {
-    this.setState({
-      tempPosts: [...this.state.posts.filter(post => post.status === status)]
-    });
-  };
-  */
 
   createPosts = e => {
     return e.map(f => (
@@ -144,11 +111,8 @@ class App extends Component {
         name={f.name}
         status={f.status}
         backgroundColorValue={f.backgroundColorValue}
-        //hoverBackgroundColorValue={f.hoverBackgroundColorValue}
         midColorValue={f.midColorValue}
-        //hoverMidColorValue={f.hoverMidColorValue}
         textColorValue={f.textColorValue}
-        //hoverTextColorValue={f.hoverTextColorValue}
         state={f.state}
         upArrow={f.upArrow}
         number={f.number}
@@ -173,11 +137,12 @@ class App extends Component {
                 onHide={addModalClose}
                 existent={this.state.currentPostExistent}
                 postdata={this.state.currentPostData}
-                refreshposts={() => this.UpdatePosts()}
+                refreshposts={() => this.updatePosts()}
               />
               <Header
                 onPopupChange={d => this.handlePopup(d)}
                 postData={this.state.newPostData}
+                refreshposts={() => this.updatePosts()}
               />
               <SubNavbar />
               <div class="container">

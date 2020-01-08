@@ -1,3 +1,9 @@
-.container {
-  max-width: auto;
+.card-desk {
+  margin-bottom: -3px;
+  text-align: center;
+}
+
+.h4 {
+  margin: 0;
+  font-weight: normal;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./PostForm.css";
-import { useState, useEffect } from "react";
-import { Modal, Button, Row, Col, Form } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Col, Form } from "react-bootstrap";
 import { SketchPicker } from "react-color";
 import axios from "axios";
 
@@ -12,43 +12,14 @@ const PostForm = props => {
     postDesc: props.postdata.desc,
     postStatus: props.postdata.status,
     postBackgroundColorValue: props.postdata.backgroundColorValue,
-    //postHoverBackgroundColorValue: props.postdata.hoverBackgroundColorValue,
     postMidColorValue: props.postdata.midColorValue,
-    //postHoverMidColorValue: props.postdata.hoverMidColorValue,
     postTextColorValue: props.postdata.textColorValue,
-    //postHoverTextColorValue: props.postdata.hoverTextColorValue,
     postState: props.postdata.state,
     postUpArrow: props.postdata.upArrow,
     postNumber: props.postdata.number,
     postLetters: props.postdata.letters,
     postOwner: props.postdata.owner
   });
-
-  const [colorPickerState, setColorPickerState] = useState({
-    showBackgroundColorPicker: false,
-    showMidColorPicker: false,
-    showTextColorPicker: false
-    //showHoverBackgroundColorPicker: false,
-    //showHoverMidColorPicker: false,
-    //showHoverTextColorPicker: false
-  });
-
-  const visibilityToggle = e => {
-    setColorPickerState({
-      showBackgroundColorPicker: false,
-      showMidColorPicker: false,
-      showTextColorPicker: false
-      //showHoverBackgroundColorPicker: false,
-      //showHoverMidColorPicker: false,
-      //showHoverTextColorPicker: false
-    });
-
-    const tempColorState = { ...colorPickerState };
-    //const value = e.currentTarget.value;
-    //const name = e.currentTarget.name;
-    tempColorState[e] = true;
-    setColorPickerState(tempColorState);
-  };
 
   const postNameRef = React.createRef();
   const postDescRef = React.createRef();
@@ -57,12 +28,6 @@ const PostForm = props => {
   const postUpArrowRef = React.createRef();
   const postNumberRef = React.createRef();
   const postLettersRef = React.createRef();
-
-  /*
-  componentDidMount() {
-    this.name.current.focus();
-  }
-  */
 
   const handleChange = e => {
     const tempFormInfo = { ...formInfo };
@@ -79,7 +44,7 @@ const PostForm = props => {
     return props.refreshposts;
   };
 
-  const HandleColorChangeEffect = (color, name) => {
+  const handleColorChangeEffect = (color, name) => {
     console.log(color);
     console.log(name);
     const tempFormInfo = { ...formInfo };
@@ -88,30 +53,16 @@ const PostForm = props => {
   };
 
   const handleChangeBackgroundColor = color => {
-    HandleColorChangeEffect(color, "postBackgroundColorValue");
+    handleColorChangeEffect(color, "postBackgroundColorValue");
   };
 
   const handleChangeMidColor = color => {
-    HandleColorChangeEffect(color, "postMidColorValue");
+    handleColorChangeEffect(color, "postMidColorValue");
   };
 
   const handleChangeTextColor = color => {
-    HandleColorChangeEffect(color, "postTextColorValue");
+    handleColorChangeEffect(color, "postTextColorValue");
   };
-
-  /*
-  const handleChangeHoverBackgroundColor = color => {
-    HandleColorChangeEffect(color, "postHoverBackgroundColorValue");
-  };
-
-  const handleChangeHoverMidColor = color => {
-    HandleColorChangeEffect(color, "postHoverMidColorValue");
-  };
-
-  const handleChangeHoverTextColor = color => {
-    HandleColorChangeEffect(color, "postHoverTextColorValue");
-  };
-  */
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -121,11 +72,8 @@ const PostForm = props => {
       desc: formInfo.postDesc,
       status: formInfo.postStatus,
       backgroundColorValue: formInfo.postBackgroundColorValue,
-      //hoverBackgroundColorValue: formInfo.postHoverBackgroundColorValue,
       midColorValue: formInfo.postMidColorValue,
-      //hoverMidColorValue: formInfo.postHoverMidColorValue,
       textColorValue: formInfo.postTextColorValue,
-      //hoverTextColorValue: formInfo.postHoverTextColorValue,
       state: parseInt(formInfo.postState),
       upArrow: parseInt(formInfo.postUpArrow),
       number: parseInt(formInfo.postNumber),
@@ -137,7 +85,6 @@ const PostForm = props => {
       await axios.post("https://localhost:5001/api/PostItems", obj);
     } else {
       obj["id"] = formInfo.postId;
-      console.log(obj);
       await axios.put("https://localhost:5001/api/PostItems/" + obj.id, obj);
     }
     props.closeForm();
@@ -275,7 +222,7 @@ const PostForm = props => {
       </Form.Row>
 
       <div className="wrapper">
-        <Button variant="primary" type="submit" onClick={props.closeForm}>
+        <Button variant="primary" type="submit" onClick={props.refreshPosts}>
           Submit
         </Button>
         <Button variant="danger" onClick={handleDelete}>

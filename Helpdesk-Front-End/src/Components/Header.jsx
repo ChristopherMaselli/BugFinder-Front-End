@@ -8,20 +8,20 @@ const Header = props => {
   };
 
   return (
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div className="Dashboard">
       <h1 class="h2">Dashboard</h1>
-      <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group mr-2">
+      <div className="ButtonToolbar">
+        <div className="ButtonGroup">
           <button variant="primary" onClick={() => handlePopupData()}>
             New Post
           </button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">
+          <button type="button" className="ExportButton">
             Export
           </button>
         </div>
         <button
           type="button"
-          class="btn btn-sm btn-outline-secondary dropdown-toggle"
+          className="btn btn-sm btn-outline-secondary dropdown-toggle"
         >
           <span data-feather="calendar"></span>
           This week
